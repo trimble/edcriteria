@@ -75,12 +75,12 @@ end
 -- 			local AXIAL
 -- 			AXIAL = string.format(', ATilt: %.2f° ', math.deg(scan.AxialTilt))
 -- 			if scan.WasDiscovered and GDISCO then
--- 				return true, 
--- 				'Discovered Giant with Ring', 
+-- 				return true,
+-- 				'Discovered Giant with Ring',
 -- 				GIANTART .. AXIAL .. RINGTYP
 -- 			else
--- 				return true, 
--- 				'Giant with Ring', 
+-- 				return true,
+-- 				'Giant with Ring',
 -- 				GIANTART .. AXIAL .. RINGTYP
 -- 			end
 -- 		end
@@ -100,8 +100,8 @@ end
 --   end
 --   local AXIAL
 --   AXIAL = string.format('ATilt: %.2f° ', math.deg(scan.AxialTilt))
---   return true, 
---     'Body with Ring', 
+--   return true,
+--     'Body with Ring',
 --     AXIAL .. RINGTYP
 -- end
 -- ::End::
@@ -199,10 +199,52 @@ local minGasGiantWithAmmoniaLifeTempK = 100
 
 local maxClassIGasGiantMassEM = 911.079224
 local minClassIGasGiantMassEM = 1.791545
-local maxClassIGasGiantRadiusM = 77785448
-local minClassIGasGiantRadiusM = 9098773
+local maxClassIGasGiantRadiusM = 77787584
+local minClassIGasGiantRadiusM = 8728057
 local maxClassIGasGiantTempK = 150
-local minClassIGasGiantTempK = 100
+local minClassIGasGiantTempK = 1
+
+local maxClassIIGasGiantMassEM = 1368.457764
+local minClassIIGasGiantMassEM = 2.641097
+local maxClassIIGasGiantRadiusM = 90000000
+local minClassIIGasGiantRadiusM = 10222803
+local maxClassIIGasGiantTempK = 250
+local minClassIIGasGiantTempK = 61
+
+local maxClassIIIGasGiantMassEM = 3457.905762
+local minClassIIIGasGiantMassEM = 4.296463
+local maxClassIIIGasGiantRadiusM = 77849944
+local minClassIIIGasGiantRadiusM = 12120956
+local maxClassIIIGasGiantTempK = 800
+local minClassIIIGasGiantTempK = 115
+
+local maxClassIVGasGiantMassEM = 5403.108398
+local minClassIVGasGiantMassEM = 16.754765
+local maxClassIVGasGiantRadiusM = 78291.304
+local minClassIVGasGiantRadiusM = 17305.224
+local maxClassIVGasGiantTempK = 1450
+local minClassIVGasGiantTempK = 800
+
+local maxClassVGasGiantMassEM = 13063.395508
+local minClassVGasGiantMassEM = 32.504833
+local maxClassVGasGiantRadiusM = 77806.056
+local minClassVGasGiantRadiusM = 20016.274
+local maxClassVGasGiantTempK = 13713
+local minClassVGasGiantTempK = 1400
+
+local maxHeliumRichGasGiantMassEM = 4764.864258
+local minHeliumRichGasGiantMassEM = 1.028593
+local maxHeliumRichGasGiantRadiusM = 77743.44
+local minHeliumRichGasGiantRadiusM = 9557.561
+local maxHeliumRichGasGiantTempK = 7787
+local minHeliumRichGasGiantTempK = 1
+
+local maxHeliumGasGiantMassEM = 5781.101074
+local minHeliumGasGiantMassEM = 9.003934
+local maxHeliumGasGiantRadiusM = 75900.72
+local minHeliumGasGiantRadiusM = 16762.012
+local maxHeliumGasGiantTempK = 1701
+local minHeliumGasGiantTempK = 53
 
 if scan.PlanetClass and scan.PlanetClass == 'Metal rich body' then
   if scan.MassEM < minMetalRichMassEM then

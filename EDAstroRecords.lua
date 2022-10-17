@@ -1,3 +1,5 @@
+--  Record-breaking bodies
+::Criteria::
 local maxMetalRichMassEM = 715.209778
 local minMetalRichMassEM = 0.0001
 local maxMetalRichRadiusM = 20739046
@@ -77,712 +79,116 @@ local minGasGiantWithAmmoniaLifeTempK = 100
 
 local maxClassIGasGiantMassEM = 911.079224
 local minClassIGasGiantMassEM = 1.791545
-local maxClassIGasGiantRadiusM = 77785448
-local minClassIGasGiantRadiusM = 9098773
+local maxClassIGasGiantRadiusM = 77787584
+local minClassIGasGiantRadiusM = 8728057
 local maxClassIGasGiantTempK = 150
-local minClassIGasGiantTempK = 100
+local minClassIGasGiantTempK = 1
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="0.734365">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class I gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 0.734365 EM and Class I gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
+local maxClassIIGasGiantMassEM = 1368.457764
+local minClassIIGasGiantMassEM = 2.641097
+local maxClassIIGasGiantRadiusM = 90000000
+local minClassIIGasGiantRadiusM = 10222803
+local maxClassIIGasGiantTempK = 250
+local minClassIIGasGiantTempK = 61
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="77787584">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class I gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 77787.584 km and Class I gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
+local maxClassIIIGasGiantMassEM = 3457.905762
+local minClassIIIGasGiantMassEM = 4.296463
+local maxClassIIIGasGiantRadiusM = 77849944
+local minClassIIIGasGiantRadiusM = 12120956
+local maxClassIIIGasGiantTempK = 800
+local minClassIIIGasGiantTempK = 115
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="8079091">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class I gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 8079.091 km and Class I gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
+local maxClassIVGasGiantMassEM = 5403.108398
+local minClassIVGasGiantMassEM = 16.754765
+local maxClassIVGasGiantRadiusM = 78291.304
+local minClassIVGasGiantRadiusM = 17305.224
+local maxClassIVGasGiantTempK = 1450
+local minClassIVGasGiantTempK = 800
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="150">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class I gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 150 K and Class I gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
+local maxClassVGasGiantMassEM = 13063.395508
+local minClassVGasGiantMassEM = 32.504833
+local maxClassVGasGiantRadiusM = 77806.056
+local minClassVGasGiantRadiusM = 20016.274
+local maxClassVGasGiantTempK = 13713
+local minClassVGasGiantTempK = 1400
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="1">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class I gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 1 K and Class I gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	
-	<!-- Class II gas giant -->
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="1368.457764">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class II gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass greater than 1368.457764 EM and Class II gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
+local maxHeliumRichGasGiantMassEM = 4764.864258
+local minHeliumRichGasGiantMassEM = 1.028593
+local maxHeliumRichGasGiantRadiusM = 77743.44
+local minHeliumRichGasGiantRadiusM = 9557.561
+local maxHeliumRichGasGiantTempK = 7787
+local minHeliumRichGasGiantTempK = 1
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="2.641097">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class II gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 2.641097 EM and Class II gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
+local maxHeliumGasGiantMassEM = 5781.101074
+local minHeliumGasGiantMassEM = 9.003934
+local maxHeliumGasGiantRadiusM = 75900.72
+local minHeliumGasGiantRadiusM = 16762.012
+local maxHeliumGasGiantTempK = 1701
+local minHeliumGasGiantTempK = 53
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="90000000">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class II gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 90000 km and Class II gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
+if scan.PlanetClass and scan.PlanetClass == 'Metal rich body' then
+	if scan.MassEM < minMetalRichMassEM then
+	  return true,
+	  'Record-breaking metal-rich',
+	  string.format('Record breaker, low mass MetalRich: %.2f EM ', scan.MassEM)
+	end
+	if scan.MassEM > maxMetalRichMassEM then
+	  return true,
+	  'Record-breaking metal-rich',
+	  string.format('Record breaker, high mass MetalRich: %.2f EM ', scan.MassEM)
+	end
+	if scan.Radius < minMetalRichRadiusM then
+	  return true,
+	  'Record-breaking metal-rich',
+	  string.format('Record breaker, small MetalRich: %.2f m ', scan.Radius)
+	end
+	if scan.Radius > maxMetalRichRadiusM then
+	  return true,
+	  'Record-breaking metal-rich',
+	  string.format('Record breaker, big MetalRich: %.2f m ', scan.Radius)
+	end
+	if scan.SurfaceTemperature < minMetalRichTempK then
+	  return true,
+	  'Record-breaking metal-rich',
+	  string.format('Record breaker, cold MetalRich: %.2f K ', scan.SurfaceTemperature)
+	end
+	if scan.SurfaceTemperature > maxMetalRichTempK then
+	  return true,
+	  'Record-breaking metal-rich',
+	  string.format('Record breaker, hot MetalRich: %.2f K ', scan.SurfaceTemperature)
+	end
+  end
 
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="10222803">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class II gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 10222.803 km and Class II gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="250">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class II gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 250 K and Class II gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="61">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class II gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 61 K and Class II gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	
-	<!-- Class III gas giant -->
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="3457.905762">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class III gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass greater than 3457.905762 EM and Class III gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="4.296463">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class III gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 4.296463 EM and Class III gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="77849944">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class III gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 77849.944 km and Class III gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="12120956">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class III gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 12120.956 km and Class III gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="800">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class III gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 800 K and Class III gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="115">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class III gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 115 K and Class III gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	
-	<!-- Class IV gas giant -->
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="5403.108398">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class IV gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass greater than 5403.108398 EM and Class IV gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="16.754765">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class IV gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 16.754765 EM and Class IV gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="78291304">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class IV gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 78291.304 km and Class IV gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="17305224">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class IV gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 17305.224 km and Class IV gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="1450">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class IV gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 1450 K and Class IV gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="800">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class IV gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 800 K and Class IV gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	
-	<!-- Class V gas giant -->
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="13063.395508">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class V gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass greater than 13063.395508 EM and Class V gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="32.504833">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class V gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 32.504833 EM and Class V gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="77806056">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class V gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 77806.056 km and Class V gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="20016274">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class V gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 20016.274 km and Class V gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="13713">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class V gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 13713 K and Class V gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="1400">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Sudarsky class V gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 1400 K and Class V gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	
-	<!-- Helium-rich gas giant -->
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="4764.864258">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium rich gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass greater than 4764.864258 EM and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="1.028593">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium rich gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 1.028593 EM and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="77743440">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium rich gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 77743.44 km and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="9557561">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium rich gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 9557.561 km and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="7787">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium rich gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 7787 K and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="1">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium rich gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 1 K and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	
-	<!-- Helium-rich gas giant -->
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="5781.101074">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass greater than 5781.101074 EM and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="9.003934">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">MassEM</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Mass less than 9.003934 EM and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>MassEM</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="75900720">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius greater than 75900.72 km and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="16762012">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">Radius</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Radius less than 16762.012 km and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>Radius</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Greater" Value="1701">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature greater than 1701 K and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-
-	<Criteria Comparator="And">
-		<Criteria Comparator="Less" Value="53">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">SurfaceTemperature</FirstValue>
-			</Operation>
-		</Criteria>
-		<Criteria Comparator="Greater" Value="0">
-			<Operation Operator="None">
-				<FirstValue Type="EventData">PlanetClass:Helium gas giant</FirstValue>
-			</Operation>
-		</Criteria>
-		<Description>Record breaker: Surface Tempature less than 53 K and Helium-rich gas giant</Description>
-		<Detail>
-			<Item>SurfaceTemperature</Item>
-		</Detail>
-	</Criteria>
-	 
-</ObservatoryCriteria>
+  if scan.PlanetClass and scan.PlanetClass == 'High metal content body' then
+	if scan.MassEM < minHMCMassEM then
+	  return true,
+	  'Record-breaking HMC',
+	  string.format('Record breaker, low mass HMC: %.2f EM ', scan.MassEM)
+	end
+	if scan.MassEM > maxHMCMassEM then
+	  return true,
+	  'Record-breaking HMC',
+	  string.format('Record breaker, high mass HMC: %.2f EM ', scan.MassEM)
+	end
+	if scan.Radius < minMetalRichRadiusM then
+	  return true,
+	  'Record-breaking HMC',
+	  string.format('Record breaker, small HMC: %.2f m ', scan.Radius)
+	end
+	if scan.Radius > maxMetalRichRadiusM then
+	  return true,
+	  'Record-breaking HMC',
+	  string.format('Record breaker, big HMC: %.2f m ', scan.Radius)
+	end
+	if scan.SurfaceTemperature < minMetalRichTempK then
+	  return true,
+	  'Record-breaking HMC',
+	  string.format('Record breaker, cold HMC: %.2f K ', scan.SurfaceTemperature)
+	end
+	if scan.SurfaceTemperature > maxMetalRichTempK then
+	  return true,
+	  'Record-breaking HMC',
+	  string.format('Record breaker, hot HMC: %.2f K ', scan.SurfaceTemperature)
+	end
+  end
+  ::End::
