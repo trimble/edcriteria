@@ -160,35 +160,39 @@ if scan.PlanetClass and scan.PlanetClass == 'Metal rich body' then
   end
 
   if scan.PlanetClass and scan.PlanetClass == 'High metal content body' then
-	if scan.MassEM < minHMCMassEM then
+	if scan.MassEM < minHMCMassEM or scan.MassEM > maxHMCMassEM then
 	  return true,
-	  'Record-breaking HMC',
-	  string.format('Record breaker, low mass HMC: %.2f EM ', scan.MassEM)
+	  'Record-breaking HMC mass',
+	  string.format('Mass: %.2f EM, Known range: %.2f to %.2f EM', scan.MassEM, minHMCMassEM, maxHMCMassEM)
 	end
-	if scan.MassEM > maxHMCMassEM then
+	if scan.Radius < minHMCRadiusM or scan.Radius > maxHMCRadiusM then
 	  return true,
-	  'Record-breaking HMC',
-	  string.format('Record breaker, high mass HMC: %.2f EM ', scan.MassEM)
+	  'Record-breaking HMC radius',
+	  string.format('Radius: %.2f m, Known range: %.2f to %.2f meters', scan.Radius, minHMCRadiusM, maxHMCRadiusM)
 	end
-	if scan.Radius < minMetalRichRadiusM then
+	if scan.SurfaceTemperature < minHMCTempK or scan.SurfaceTemperature > maxHMCTempK then
 	  return true,
-	  'Record-breaking HMC',
-	  string.format('Record breaker, small HMC: %.2f m ', scan.Radius)
-	end
-	if scan.Radius > maxMetalRichRadiusM then
-	  return true,
-	  'Record-breaking HMC',
-	  string.format('Record breaker, big HMC: %.2f m ', scan.Radius)
-	end
-	if scan.SurfaceTemperature < minMetalRichTempK then
-	  return true,
-	  'Record-breaking HMC',
-	  string.format('Record breaker, cold HMC: %.2f K ', scan.SurfaceTemperature)
-	end
-	if scan.SurfaceTemperature > maxMetalRichTempK then
-	  return true,
-	  'Record-breaking HMC',
-	  string.format('Record breaker, hot HMC: %.2f K ', scan.SurfaceTemperature)
+	  'Record-breaking HMC temperature',
+	  string.format('Temp: %d K , Known range:  %d to %d K', scan.SurfaceTemperature, minHMCTempK, maxHMCTempK)
 	end
   end
-  ::End::
+
+  if scan.PlanetClass and scan.PlanetClass == 'Rocky body' then
+	if scan.MassEM < minRockyMassEM or scan.MassEM > maxRockyMassEM then
+	  return true,
+	  'Record-breaking rocky body mass',
+	  string.format('Mass: %.2f EM, Known range: %.2f to %.2f EM', scan.MassEM, minRockyMassEM, maxRockyMassEM)
+	end
+	if scan.Radius < minRockyRadiusM or scan.Radius > maxRockyRadiusM then
+	  return true,
+	  'Record-breaking rocky body radius',
+	  string.format('Radius: %.2f m, Known range: %.2f to %.2f meters', scan.Radius, minRockyRadiusM, maxRockyRadiusM)
+	end
+	if scan.SurfaceTemperature < minRockyTempK or scan.SurfaceTemperature > maxRockyTempK then
+	  return true,
+	  'Record-breaking rocky body temperature',
+	  string.format('Temp: %d K , Known range:  %d to %d K', scan.SurfaceTemperature, minRockyTempK, maxRockyTempK)
+	end
+  end
+
+::End::
