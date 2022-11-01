@@ -214,3 +214,100 @@ if scan.PlanetClass and scan.PlanetClass == 'Rocky body' then
 end
 
 ::End::
+
+::Criteria::
+local recordBook = {
+  ["Metal rich body"] = {
+    DistanceFromArrivalLS = {0.087741, 7490780},
+    MassEM = {0.0001, 715.209778},
+    Radius = {137.38325, 20739.046},
+    RotationPeriod = {0.046768454097, 5578.24185185185},
+    SurfaceGravity = {0.029231388904, 199.958389460213},
+    SurfacePressure = {0, 43050307445.3848},
+    SurfaceTemperature = {20, 47991},
+  },
+  ["High metal content body"] = {
+    DistanceFromArrivalLS = {0.147454, 7489280},
+    MassEM = {0.0001, 1397.998047},
+    OrbitalPeriod = {0.005607748738, 111160422.502844},
+    Radius = {210.242671875, 72253.984},
+    RotationPeriod = {0.055748183634, 141426.654814815},
+    SurfaceGravity = {0.028504229273, 228.220131339448},
+    SurfacePressure = {0, 38894529198.7091},
+    SurfaceTemperature = {20, 46100},
+  },
+  ["Rocky body"] = {
+    DistanceFromArrivalLS = {},
+    MassEM = {},
+    OrbitalPeriod = {},
+    Radius = {},
+    RotationPeriod = {},
+    SurfaceGravity = {},
+    SurfacePressure = {},
+    SurfaceTemperature = {},
+  },
+  ["Icy body"] = {
+
+  },
+  ["Rocky ice body"] = {
+
+  },
+  ["Earthlike body"] = {
+
+  },
+  ["Water world"] = {
+
+  },
+  ["Ammonia world"] = {
+
+  },
+  ["Water giant"] = {
+
+  },
+  ["Water giant with life"] = {
+
+  },
+  ["Gas giant with water based life"] = {
+
+  },
+  ["Gas giant with ammonia based life"] = {
+
+  },
+  ["Sudarsky class I gas giant"] = {
+
+  },
+  ["Sudarsky class II gas giant"] = {
+
+  },
+  ["Sudarsky class III gas giant"] = {
+
+  },
+  ["Sudarsky class IV gas giant"] = {
+
+  },
+  ["Sudarsky class V gas giant"] = {
+
+  },
+  ["Helium rich gas giant"] = {
+
+  },
+  ["Helium gas giant"] = {
+
+  },
+}
+
+if scan.PlanetClass then
+  for parameter, range in pairs(records[scan.PlanetClass])
+  do
+    if scan[parameter] < range[1] or scan[parameter] > range[2] then
+      return true,
+        string.format("Record-breaking %s %s", scan.PlanetClass, parameter),
+        string.format(
+          "Measured = %f, Range = %f to %f",
+          scan[parameter],
+          range[1],
+          range[2]
+        ))
+    end
+  end
+end::End::
