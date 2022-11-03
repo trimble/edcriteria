@@ -220,84 +220,84 @@ local recordBook = {
   ["Metal rich body"] = {
     DistanceFromArrivalLS = {0.087741, 7490780},
     MassEM = {0.0001, 715.209778},
-    Radius = {137.38325, 20739.046},
-    RotationPeriod = {0.046768454097, 5578.24185185185},
+    Radius = {137383.25, 20739046},
     SurfaceGravity = {0.029231388904, 199.958389460213},
-    SurfacePressure = {0, 43050307445.3848},
     SurfaceTemperature = {20, 47991},
   },
   ["High metal content body"] = {
     DistanceFromArrivalLS = {0.147454, 7489280},
     MassEM = {0.0001, 1397.998047},
-    OrbitalPeriod = {0.005607748738, 111160422.502844},
-    Radius = {210.242671875, 72253.984},
-    RotationPeriod = {0.055748183634, 141426.654814815},
+    Radius = {210242.671875, 72253984},
     SurfaceGravity = {0.028504229273, 228.220131339448},
-    SurfacePressure = {0, 38894529198.7091},
     SurfaceTemperature = {20, 46100},
   },
   ["Rocky body"] = {
-    DistanceFromArrivalLS = {},
-    MassEM = {},
-    OrbitalPeriod = {},
-    Radius = {},
-    RotationPeriod = {},
-    SurfaceGravity = {},
-    SurfacePressure = {},
-    SurfaceTemperature = {},
+    DistanceFromArrivalLS = {3.2831, 7491680},
+    MassEM = {0.0001, 527.839539},
+    Radius = {181887.875, 21765112},
+    SurfaceGravity = {0.007895669291, 50.039830862644},
+    SurfaceTemperature = {20, 51171},
   },
   ["Icy body"] = {
-
-  },
+    DistanceFromArrivalLS = {1.37026, 15652900},
+    MassEM = {0.0001, 2214.019287},
+    Radius = {160000, 31232910},
+    SurfaceGravity = {0.004758505708, 236.648152852392},
+    SurfaceTemperature = {1, 4020},
+},
   ["Rocky ice body"] = {
-
+    DistanceFromArrivalLS = {5.3542, 5338980},
+    MassEM = {0.000107, 298.62381},
+    Radius = {276000, 28515804},
+    SurfaceGravity = {0.001378452377, 17.259812728912},
+    SurfaceTemperature = {20, 15742},
   },
   ["Earthlike body"] = {
-
+    DistanceFromArrivalLS = {6, 736306},
   },
   ["Water world"] = {
-
+    DistanceFromArrivalLS = {3, 4217440},
   },
   ["Ammonia world"] = {
-
+    DistanceFromArrivalLS = {7, 817190},
   },
   ["Water giant"] = {
-
+    DistanceFromArrivalLS = {21, 690129},
   },
   ["Water giant with life"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Gas giant with water based life"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Gas giant with ammonia based life"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Sudarsky class I gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Sudarsky class II gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Sudarsky class III gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Sudarsky class IV gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Sudarsky class V gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Helium rich gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
   ["Helium gas giant"] = {
-
+    DistanceFromArrivalLS = {0.087741, 7490780},
   },
 }
 
-if scan.PlanetClass then
-  for parameter, range in pairs(records[scan.PlanetClass])
+if scan.PlanetClass and scan.PlanetClass ~= "Barycentre" then
+  for parameter, range in pairs(recordBook[scan.PlanetClass])
   do
     if scan[parameter] < range[1] or scan[parameter] > range[2] then
       return true,
@@ -307,7 +307,8 @@ if scan.PlanetClass then
           scan[parameter],
           range[1],
           range[2]
-        ))
+        )
     end
   end
-end::End::
+end
+::End::
