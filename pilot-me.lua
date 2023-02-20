@@ -38,9 +38,6 @@ TRIGGERRINGFACTS = false -- Shows details of the scanned ring
 
 SHOWATMODETAILS = true -- showing atmo-details if more than 1 and not rare (set atmo-detail to rare further down in criteria)
 
-TRIGGERFASTGIANT = false -- Triggers for Gas Giant with fast Orbit, in which this star system is a metallicity survey candidate
-GIANTORBITYEARS = 0.5 -- set Giant Orbit Period in years (maximum) / Andrew Gaspurr will set this to 4 ;)
-
 TRIGGERHIGHSOLARMASS = true -- Triggers for certain kind of Stars with High Solar Mass (set Type of Stars within the Criteria)
 
 TRIGGERSTARYEARS = true -- Triggers for Stars which are even or older the given value in MINSTARYEARS
@@ -694,58 +691,6 @@ if TRIGGERGASGIANT then
             else
                 return true, zufall(PHRASE) .. 'You found an undiscovered ' .. GIANTCLASS[GIGANT].output,
                     'Giant was NOT discovered' .. RINGTYP
-            end
-        end
-    end
-end
-::End::
-
--- Triggers for all kind of Giants with Orbital Period less than GIANTORBITYEARS years / which are found in certain Starsystems
--- on suggest of Andrew Gaspurr
--- https://github.com/Xjph/ObservatoryCore/wiki/Lua-Custom-Criteria#StarType-Values
--- The data is used to compute a sector's metallicity based on the planet-metallicity relation
--- https://iopscience.iop.org/article/10.1086/428383/pdf
-::Criteria::
-if TRIGGERFASTGIANT and not FASTGIANTCALLED then
-    local STARGIANT = {"F", "G", "K"} -- set Type of Stars(-systems) in which the criteria should search for fast giants
-    if systemHasOneOfMainStarTypes(system, STARGIANT) then
-        if scan.PlanetClass and scan.PlanetClass ~= '' then
-            local GIGANT = 0
-            GIANTCLASS = {};
-            for i = 1, 11 do
-                GIANTCLASS[i] = {}
-            end
-            GIANTCLASS[1].game = 'Sudarsky class I gas giant';
-            GIANTCLASS[1].output = 'Giant Class I';
-            GIANTCLASS[2].game = 'Sudarsky class II gas giant';
-            GIANTCLASS[2].output = 'Giant Class II';
-            GIANTCLASS[3].game = 'Sudarsky class III gas giant';
-            GIANTCLASS[3].output = 'Giant Class III';
-            GIANTCLASS[4].game = 'Sudarsky class IV gas giant';
-            GIANTCLASS[4].output = 'Giant Class IV';
-            GIANTCLASS[5].game = 'Sudarsky class V gas giant';
-            GIANTCLASS[5].output = 'Giant Class V';
-            GIANTCLASS[6].game = 'Water giant';
-            GIANTCLASS[6].output = 'Water Giant';
-            GIANTCLASS[7].game = 'Water giant with life';
-            GIANTCLASS[7].output = 'Water Giant with Life';
-            GIANTCLASS[8].game = 'Gas giant with water based life';
-            GIANTCLASS[8].output = 'Water based Life';
-            GIANTCLASS[9].game = 'Gas giant with ammonia based life';
-            GIANTCLASS[9].output = 'Ammonia based Life';
-            GIANTCLASS[10].game = 'Helium rich gas giant';
-            GIANTCLASS[10].output = 'Helium rich Giant';
-            GIANTCLASS[11].game = 'Helium gas giant';
-            GIANTCLASS[11].output = 'Helium Giant';
-            for i = 1, 11 do
-                if scan.PlanetClass == GIANTCLASS[i].game and scan.OrbitalPeriod < (GIANTORBITYEARS * YEARSEC) then
-                    GIGANT = i
-                end
-            end
-            if GIGANT > 0 then
-                FASTGIANTCALLED = true
-                return true, zufall(PHRASE) .. 'This star system is a metallicity survey candidate', GIANTCLASS[GIGANT]
-                    .output .. ', Orbital Period: ' .. NumForm((scan.OrbitalPeriod / YEARSEC), 2, ' Years')
             end
         end
     end
