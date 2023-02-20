@@ -237,7 +237,6 @@ DAYSEC = 86400 -- seconds per day
 YEARSEC = 31536000 -- seconds per year
 SUNRAD = 695499968.000000 -- (seems to be the game value / as on Wikipedia, Radius of Sun is 696342 km
 STARYEARSCALLED = false -- will be true if one old star is called
-FASTGIANTCALLED = false -- will be true if one fast gas giant is called
 SYSTEMNAMESTORE = '' -- Value changes when entering a new system (= reset some values - see first criteria)
 ::End::
 
@@ -413,7 +412,6 @@ end
 if scan.StarSystem and scan.StarSystem ~= SYSTEMNAMESTORE then
     SYSTEMNAMESTORE = scan.StarSystem
     STARYEARSCALLED = false -- will be true if one old star is called
-    FASTGIANTCALLED = false -- will be true if one fast gas giant is called
     return false -- to avoid empty line in displayed table
 end
 ::End::
