@@ -6,10 +6,6 @@ function string.startsWith(String, Start)
     return string.sub(String, 1, string.len(Start)) == Start
 end
 
--- Set the following on your own to control behavior ( true or false or value )
-SPEAKPHRASE = false -- adding a spoken phrase when custom-trigger
-NEWLINEPHRASE = true -- Set a new line in display after the phrase
-
 MINBIOLOGICAL = 5 -- minimum to trigger for biological signals (deactivate checkbox in Core 'diverse lifeforms')
 
 TRIGGERCSP = true -- Triggers for CloseStarProximity
@@ -49,26 +45,6 @@ SPGASGIANTSLSFACTOR = 30 -- (default = 30) base value to calculate Distance and 
 SPGASGIANTSTEMP = 2000 -- min temperature to call out for 'Ultra Hot Jupiter'
 
 TRIGGERGASGIANT = true -- Triggers for Giants of Class V, Helium rich and Helium / set more values (or less) within the Criteria itself
-
--- Random Phrasegenerator
--- Set SPEAKPHRASE to false in the globals above if you don't want them
-NOTHING = math.randomseed(os.clock() * 1000000)
-zufall = function(x)
-    local r = math.random(1, 26)
-    if SPEAKPHRASE then
-        if NEWLINEPHRASE then
-            return x[r] .. string.char(10)
-        else
-            return x[r]
-        end
-    else
-        return ''
-    end
-end
-PHRASE = {"WOW! ", "Hey Commander, ", "LOOK Mommy: ", "EXCELLENT! ", "HOHOHO, ", "STOPP Daddy! ", "YAHOO! ", "HEY! ",
-          "YIPPEE! ", "WAIT! WHAT? ", "HURRAY! ", "YES! ", "Hang on! ", "HOLY MOLY! ", "Awesome! ", "Oh my goodness! ",
-          "Very impressive! ", "Fantastic! ", "What shall I say, ", "You won't believe it! ", "What the . . . ",
-          "SENSATION! ", "Shoubidouh, ", "Yabba Dabba Doo! ", "BAM! ", "ring ring ring banana phone, "}
 
 -- funtion to form output of numbers
 function NumForm(INPUT, NK, EINHEIT)
@@ -437,7 +413,7 @@ if scan.Landable and scan.Atmosphere ~= '' and biosignals > 0 then
     end
     if STARCOUNT > 0 then
         return true,
-            zufall(PHRASE) .. string.format('Star%s', STARCOUNT > 1 and 's' or '') .. ' of Type ' .. STARTYP ..
+            string.format('Star%s', STARCOUNT > 1 and 's' or '') .. ' of Type ' .. STARTYP ..
                 'Landable Planet with Atmosphere and ' ..
                 string.format('%i Bio-Signal%s', biosignals, biosignals > 1 and 's' or ''),
             'DfA: ' .. NumForm(scan.DistanceFromArrivalLS, 0, ' LS')
@@ -450,7 +426,7 @@ end
 ::Criteria::
 if scan.Landable and scan.Atmosphere == '' and biosignals > 0 then
     return true,
-        zufall(PHRASE) .. 'Landable ' .. scan.PlanetClass .. ' without Atmosphere' .. string.char(10) .. 'and ' ..
+        'Landable ' .. scan.PlanetClass .. ' without Atmosphere' .. string.char(10) .. 'and ' ..
             string.format('%i Biological Signal%s found', biosignals, biosignals > 1 and 's' or ''),
         'DfA: ' .. NumForm(scan.DistanceFromArrivalLS, 0, ' LS')
 end
@@ -475,7 +451,7 @@ if scan.Landable and parents then
         local AWAY = scan.SemiMajorAxis / KMINLS
         if AWAY < 1 then
             return true,
-                zufall(PHRASE) .. 'This Nested Landable Moon is just ' .. NumForm(AWAY, DECIMALPLACES, ' LS') ..
+                'This Nested Landable Moon is just ' .. NumForm(AWAY, DECIMALPLACES, ' LS') ..
                     ' from Parent', 'DfA: ' .. NumForm(scan.DistanceFromArrivalLS, 0, ' LS')
         end
     end
@@ -496,7 +472,7 @@ if (scan.PlanetClass == 'Earthlike body' or scan.PlanetClass == 'Water world' or
     if scan.PlanetClass == 'Ammonia world' then
         PTYPE = 'Ammonia World'
     end
-    return true, zufall(PHRASE) .. 'This ' .. PTYPE .. ' has a Ring',
+    return true, 'This ' .. PTYPE .. ' has a Ring',
         'DfA: ' .. NumForm(scan.DistanceFromArrivalLS, 0, ' LS')
 end
 ::End::
@@ -516,7 +492,7 @@ if scan.Landable and ((scan.SemiMajorAxis / KMINLS) <= TERRLSMAX) and parents th
         PTYPE = 'Ammonia World'
     end
     if PTYPE ~= '' then
-        return true, zufall(PHRASE) .. 'A Landable Moon at ' .. PTYPE, 'Moon: ' .. scan.PlanetClass .. ', ' ..
+        return true, 'A Landable Moon at ' .. PTYPE, 'Moon: ' .. scan.PlanetClass .. ', ' ..
             NumForm(scan.SemiMajorAxis / KMINLS, DECIMALPLACES, ' LS') .. ' from Parent'
     end
 end
@@ -539,7 +515,7 @@ if scan.Landable and scan.Rings and parents then
             else
                 ATMOS = ""
             end
-            return true, zufall(PHRASE) .. 'Landable Moon with Ring' .. ATMOS .. ', has Parent with Ring', 'Moon: ' ..
+            return true, 'Landable Moon with Ring' .. ATMOS .. ', has Parent with Ring', 'Moon: ' ..
                 scan.PlanetClass .. ', ' .. NumForm(scan.SemiMajorAxis / KMINLS, DECIMALPLACES, ' LS') .. ' from Parent'
         end
     end
@@ -558,7 +534,7 @@ if (math.abs(scan.OrbitalInclination) >= INCLOIMIN) and scan.Landable and ((scan
             end
         end
         return true,
-            zufall(PHRASE) .. 'Landable Moon with High Inclanation' .. string.char(10) .. 'is close to Parent with ' ..
+            'Landable Moon with High Inclanation' .. string.char(10) .. 'is close to Parent with ' ..
                 RINGBELTDETAIL,
             'Moon: ' .. scan.PlanetClass .. ' / OrbitInc: ' .. string.format('%.2f', scan.OrbitalInclination) .. '° / ' ..
                 NumForm(scan.SemiMajorAxis / KMINLS, DECIMALPLACES, ' LS') .. ' to Parent' .. string.char(10) .. 'DfA: ' ..
@@ -602,18 +578,18 @@ if parents and SCANRING == false then
                 SHEPHERD = true
             end
             if scan.PlanetClass == 'Barycentre' and (MOONORBIT - OUTERRAD[RINGCOUNT]) < HOWCLOSETORING then
-                return true, zufall(PHRASE) .. 'This Barycenter is very close to a Ring',
+                return true, 'This Barycenter is very close to a Ring',
                     'Orbit: ' .. NumForm(MOONORBIT, 0, ' km') .. string.char(10) .. 'Ringradius: ' ..
                         NumForm(OUTERRAD[RINGCOUNT], 0, ' km') .. string.char(10) .. 'Distance to Ring: ' ..
                         NumForm(MOONORBIT - OUTERRAD[RINGCOUNT], 0, ' km')
             end
             if (MOONORBIT - OUTERRAD[RINGCOUNT]) < HOWCLOSETORING then
                 if SHEPHERD then
-                    return true, zufall(PHRASE) .. 'There is a ' .. LANDBAR .. 'Shepherd Moon',
+                    return true, 'There is a ' .. LANDBAR .. 'Shepherd Moon',
                         'Inner Ring: ' .. NumForm(INNERRAD[1], 0, ' km') .. ', Orbit: ' .. NumForm(MOONORBIT, 0, ' km') ..
                             ', Outer Ring: ' .. NumForm(OUTERRAD[RINGCOUNT], 0, ' km')
                 else
-                    return true, zufall(PHRASE) .. 'This ' .. LANDBAR .. 'Moon is VERY close to Ring of Parent',
+                    return true, 'This ' .. LANDBAR .. 'Moon is VERY close to Ring of Parent',
                         'Orbit: ' .. NumForm(MOONORBIT, 0, ' km') .. ', Moonradius: ' ..
                             NumForm(scan.Radius / 1000, 0, ' km') .. string.char(10) .. 'Ringradius: ' ..
                             NumForm(OUTERRAD[RINGCOUNT], 0, ' km') .. ', Distance to Ring: ' ..
@@ -642,7 +618,7 @@ if scan.StarType and scan.StarType ~= '' and not NOINTERESTSTAR[scan.StarType] a
         if scan.Luminosity then
             LUMI = scan.Luminosity
         end
-        return true, zufall(PHRASE) .. 'Found a Star of Type ' .. scan.StarType .. ', with Ring', 'Startype: ' ..
+        return true, 'Found a Star of Type ' .. scan.StarType .. ', with Ring', 'Startype: ' ..
             scan.StarType .. ', Sub: ' .. scan.Subclass .. ', Lum: ' .. LUMI .. ', Rings: ' .. DETAILS
     end
 end
@@ -684,10 +660,10 @@ if TRIGGERGASGIANT then
         end
         if GIGANT > 0 then
             if scan.WasDiscovered then
-                return true, zufall(PHRASE) .. 'You found a ' .. GIANTCLASS[GIGANT].output,
+                return true, 'You found a ' .. GIANTCLASS[GIGANT].output,
                     'Giant was discovered' .. RINGTYP
             else
-                return true, zufall(PHRASE) .. 'You found an undiscovered ' .. GIANTCLASS[GIGANT].output,
+                return true, 'You found an undiscovered ' .. GIANTCLASS[GIGANT].output,
                     'Giant was NOT discovered' .. RINGTYP
             end
         end
@@ -717,7 +693,7 @@ if TRIGGERHIGHSOLARMASS then
                 if scan.Luminosity then
                     LUMI = scan.Luminosity
                 end
-                return true, zufall(PHRASE) .. 'Found a Star of Type ' .. scan.StarType .. ' with High Solar Mass',
+                return true, 'Found a Star of Type ' .. scan.StarType .. ' with High Solar Mass',
                     'Mass: ' .. string.format('%.2f', scan.StellarMass) .. ', StarType: ' .. scan.StarType .. ', Sub: ' ..
                         scan.Subclass .. ', Lum: ' .. LUMI
             end
@@ -737,7 +713,7 @@ if TRIGGERSTARYEARS and not STARYEARSCALLED then
                 LUMI = scan.Luminosity
             end
             STARYEARSCALLED = true
-            return true, zufall(PHRASE) .. 'Star of Type ' .. scan.StarType .. ' is ' .. NumForm(scan.Age_MY, 0, '') ..
+            return true, 'Star of Type ' .. scan.StarType .. ' is ' .. NumForm(scan.Age_MY, 0, '') ..
                 ' Billion Years old',
                 'Type: ' .. scan.StarType .. ' / Solar-Radius: ' .. NumForm((scan.Radius / 1000) / SUNRAD, 2, '') ..
                     string.char(10) .. 'Solar-Mass: ' .. NumForm(scan.StellarMass, 2, '') .. ' / Sub: ' .. scan.Subclass ..
@@ -838,7 +814,7 @@ if scan.Landable and scan.AtmosphereComposition then
         end
     end
     if RARE > 0 then
-        return true, zufall(PHRASE) .. 'This Atmosphere contains ' ..
+        return true, 'This Atmosphere contains ' ..
             string.format('%i rare Element%s', RARE, RARE > 1 and 's' or ''), string.sub(ADETAIL, 3)
     end
     if COUNT > 1 and SHOWATMODETAILS then
@@ -985,7 +961,7 @@ if TRIGGERSPGASGIANTS then
         end
 
         if SPGASGIANTFOUND and FACTORBITLS <= SPGASGIANTPROXY and FACTTEMPERATURE < SPGASGIANTSTEMP then
-            return true, zufall(PHRASE) .. 'Short-Period Gas Giant' .. TRIGGERVARIANT,
+            return true, 'Short-Period Gas Giant' .. TRIGGERVARIANT,
                 'Type: ' .. scan.PlanetClass .. string.char(10) .. 'Temperature: ' ..
                     NumForm(scan.SurfaceTemperature, 0, ' K') .. string.char(10) .. 'Orbital Period: ' ..
                     NumForm(FACTORBITDAYS, 2, ' days') .. string.char(10) .. 'Orbit: ' .. NumForm(FACTORBITLS, 1, ' LS') ..
@@ -994,7 +970,7 @@ if TRIGGERSPGASGIANTS then
                     string.char(10) .. PARENTSTAR .. string.char(10) .. 'Radius of Star: ' .. STARRADIUS
 
         elseif SPGASGIANTFOUND and FACTORBITLS <= SPGASGIANTPROXY and FACTTEMPERATURE > SPGASGIANTSTEMP then
-            return true, zufall(PHRASE) .. 'Ultra-Hot-Jupiter!' .. TRIGGERVARIANT,
+            return true, 'Ultra-Hot-Jupiter!' .. TRIGGERVARIANT,
                 'Type: ' .. scan.PlanetClass .. string.char(10) .. 'Temperature: ' ..
                     NumForm(scan.SurfaceTemperature, 0, ' K') .. string.char(10) .. 'Orbital Period: ' ..
                     NumForm(FACTORBITDAYS, 2, ' days') .. string.char(10) .. 'Orbit: ' .. NumForm(FACTORBITLS, 1, ' LS') ..
@@ -1003,7 +979,7 @@ if TRIGGERSPGASGIANTS then
                     string.char(10) .. PARENTSTAR .. string.char(10) .. 'Radius of Star: ' .. STARRADIUS
 
         elseif FACTTEMPERATURE > SPGASGIANTSTEMP then -- in case we got no parent (can happen, when autoscan get the gas giant before the star)
-            return true, zufall(PHRASE) .. 'Ultra-Hot-Jupiter!' .. TRIGGERVARIANT,
+            return true, 'Ultra-Hot-Jupiter!' .. TRIGGERVARIANT,
                 'Type: ' .. scan.PlanetClass .. string.char(10) .. 'Temperature: ' .. NumForm(FACTTEMPERATURE, 0, ' K') ..
                     string.char(10) .. 'Orbital Period: ' .. NumForm(FACTORBITDAYS, 2, ' days') .. string.char(10) ..
                     'Orbit: ' .. NumForm(FACTORBITLS, 1, ' LS') .. string.char(10) .. 'DfA: ' ..
