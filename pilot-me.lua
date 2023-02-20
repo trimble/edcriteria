@@ -240,7 +240,17 @@ STARYEARSCALLED = false -- will be true if one old star is called
 SYSTEMNAMESTORE = '' -- Value changes when entering a new system (= reset some values - see first criteria)
 ::End::
 
+-- Reset Counter on arrival in new system. Use to reset globals when entering new system.
+-- hope to get scan.Start and scan.Complete in future versions
 ::Criteria::
+if scan.StarSystem and scan.StarSystem ~= SYSTEMNAMESTORE then
+    SYSTEMNAMESTORE = scan.StarSystem
+    STARYEARSCALLED = false -- will be true if one old star is called
+    return false -- to avoid empty line in displayed table
+end
+::End::
+
+::Criteria:: -- Trigger on any metallic ring
 for ring in rings(scan.Rings) do
     if ring.ringclass == 'eRingClass_Metalic' then
         return true, 'Metallic Ring', ring.name
@@ -248,7 +258,7 @@ for ring in rings(scan.Rings) do
 end
 ::End::
 
-::Criteria::
+::Criteria:: -- Trigger on any ring around an interesting star type
 local uninterestingRingedStarTypes = {
     ['L'] = true,
     ['T'] = true,
@@ -273,8 +283,33 @@ if scan.StarType and scan.StarType ~= '' and not uninterestingRingedStarTypes[sc
 end
 ::End::
 
-::Criteria::
--- Hot Jupiters
+-- NOTE: Need to figure out which of the above or below we like better.
+
+::Criteria:: -- Trigger on any ring around an interesting star type
+local uninterestingRingedStarTypes = {
+    ['L'] = true,
+    ['T'] = true,
+    ['Y'] = true
+}
+
+if scan.StarType and not uninterestingRingedStarTypes[scan.StarType] and hasRings(scan.Rings) then
+    for ring in ringsOnly(scan.Rings) do
+        local starTypeDesc = scan.StarType:gsub('_', ' ') .. ' star'
+        if string.startsWith(scan.StarType, 'D') then
+            starTypeDesc = 'White Dwarf (' .. scan.StarType .. ') star'
+        elseif scan.StarType == 'H' then
+            starTypeDesc = 'Black Hole'
+        elseif scan.StarType == 'N' then
+            starTypeDesc = 'Neutron star'
+        elseif scan.StarType == 'X' then
+            starTypeDesc = 'Exotic star'
+        end
+        return true, 'Ringed ' .. starTypeDesc, ''
+    end
+end
+::End::
+
+::Criteria:: -- Trigger on Hot Jupiter
 if scan.ParentType == 'Star' then
     if scan.PlanetClass and string.find(string.lower(scan.PlanetClass), 'gas giant') and (scan.OrbitalPeriod <= 864000) then
         return true, 'Hot Jupiter', 'Orbital Period: ' .. math.floor(scan.OrbitalPeriod / 864) / 100 .. ' days'
@@ -282,17 +317,15 @@ if scan.ParentType == 'Star' then
 end
 ::End::
 
--- Announce the number of biological signals
--- Set MINBIO for signals minmum
--- Switch off 'Diverse Life' in core to avoid double announcement
-::Criteria::
-local MINBIO = 5
-if biosignals >= MINBIO then
-    return true, string.format('%i biological signal%s found', biosignals, biosignals > 1 and 's' or ''), ''
+::Criteria:: -- Trigger on high number of biological signals
+if biosignals >= MINBIOLOGICAL then
+    return true,
+           string.format('%i biological signal%s found', biosignals, biosignals > 1 and 's' or ''),
+           'DfA: ' .. NumForm(scan.DistanceFromArrivalLS, 2, ' LS')
 end
 ::End::
 
-::Criteria::
+::Criteria:: -- Trigger on potential galactic record breakers
 local recordBook = {
     ["Metal rich body"] = {
         DistanceFromArrivalLS = {0.087741, 7490780},
@@ -380,39 +413,6 @@ if scan.PlanetClass and scan.PlanetClass ~= "Barycentre" then
                 string.format("Measured = %f, Range = %f to %f", scan[parameter], range[1], range[2])
         end
     end
-end
-::End::
-
-::Criteria::
-local uninterestingRingedStarTypes = {
-    ['L'] = true,
-    ['T'] = true,
-    ['Y'] = true
-}
-
-if scan.StarType and not uninterestingRingedStarTypes[scan.StarType] and hasRings(scan.Rings) then
-    for ring in ringsOnly(scan.Rings) do
-        local starTypeDesc = scan.StarType:gsub('_', ' ') .. ' star'
-        if string.startsWith(scan.StarType, 'D') then
-            starTypeDesc = 'White Dwarf (' .. scan.StarType .. ') star'
-        elseif scan.StarType == 'H' then
-            starTypeDesc = 'Black Hole'
-        elseif scan.StarType == 'N' then
-            starTypeDesc = 'Neutron star'
-        elseif scan.StarType == 'X' then
-            starTypeDesc = 'Exotic star'
-        end
-        return true, 'Ringed ' .. starTypeDesc, ''
-    end
-end
-::End::
-
--- Reset Counter on arrival in new system - hope to get scan.Start and scan.Complete in future versions
-::Criteria::
-if scan.StarSystem and scan.StarSystem ~= SYSTEMNAMESTORE then
-    SYSTEMNAMESTORE = scan.StarSystem
-    STARYEARSCALLED = false -- will be true if one old star is called
-    return false -- to avoid empty line in displayed table
 end
 ::End::
 
@@ -844,17 +844,6 @@ if scan.Landable and scan.AtmosphereComposition then
     if COUNT > 1 and SHOWATMODETAILS then
         return true, '', string.sub(ADETAIL, 3)
     end
-end
-::End::
-
--- Announce the amount of Biological Signals
--- Set MINBIO for signals minmum
--- Switch off 'Diverse Live' in core to avoid double announcement
-::Criteria::
-if biosignals >= MINBIOLOGICAL then
-    return true, zufall(PHRASE) .. 'You found ' ..
-        string.format('%i Biological Signal%s', biosignals, biosignals > 1 and 's' or ''),
-        'DfA: ' .. NumForm(scan.DistanceFromArrivalLS, 2, ' LS')
 end
 ::End::
 
