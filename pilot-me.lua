@@ -13,12 +13,6 @@ CSPMAX = 150 -- maximal QUOT for calling a CloseStarProximity (marty--mcfly = 12
 CSPMAXATMO = 1150 -- adding this value to maximal QUOT in case Landable is with Atmosphere (marty-mcfly = 1000 / Sirob = 1500)
 CSPMAXLS = 200 -- set max LS only for Landable at small stars like N, D.., H, X
 
-NOINTERESTSTAR = { -- Set or uncomment star-type with ring you don't want to be triggered
-    ['L'] = true,
-    ['T'] = true,
-    ['Y'] = true -- This Type of Star with Ring will not be called
-}
-
 HOWCLOSETORING = 20000 -- Close Ring Proximity: Set how much km in maximum to outer radius of ring the moon should be
 
 -- Trigger for Landable Moon at Earth like -, Water - or Ammonia World
