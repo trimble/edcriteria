@@ -214,14 +214,20 @@ YEARSEC = 31536000 -- seconds per year
 SUNRAD = 695499968.000000 -- (seems to be the game value / as on Wikipedia, Radius of Sun is 696342 km
 STARYEARSCALLED = false -- will be true if one old star is called
 SYSTEMNAMESTORE = '' -- Value changes when entering a new system (= reset some values - see first criteria)
+math.randomseed(os.time())
+RNDSELECTIONTHRESHOLD = 0.20 -- probability that any visited system will be randomly selected for scanning
 ::End::
 
--- Reset Counter on arrival in new system. Use to reset globals when entering new system.
+-- Trigger on arrival in new system. Use to reset globals and roll random chance for scanning when entering new system.
 -- hope to get scan.Start and scan.Complete in future versions
 ::Criteria::
 if scan.StarSystem and scan.StarSystem ~= SYSTEMNAMESTORE then
     SYSTEMNAMESTORE = scan.StarSystem
     STARYEARSCALLED = false -- will be true if one old star is called
+    RNDROLL = math.random()
+    if RNDROLL < RNDSELECTIONTHRESHOLD then
+        return true, 'System randomly selected for scanning', RNDROLL .. ' < ' .. RNDSELECTIONTHRESHOLD
+    end
     return false -- to avoid empty line in displayed table
 end
 ::End::
