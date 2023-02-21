@@ -243,10 +243,10 @@ local uninterestingRingedStarTypes = {
     ['Y'] = true
 }
 
-if scan.StarType and scan.StarType ~= '' and not uninterestingRingedStarTypes[scan.StarType] and scan.Rings then
+if scan.StarType and not uninterestingRingedStarTypes[scan.StarType] and hasRings(scan.Rings) then
     local details = ''
     local sep = ''
-    for ring in rings(scan.Rings) do
+    for ring in ringsOnly(scan.Rings) do
         if (string.find(ring.name, "Ring")) then
             if details ~= '' and sep == '' then
                 sep = ','
@@ -255,23 +255,6 @@ if scan.StarType and scan.StarType ~= '' and not uninterestingRingedStarTypes[sc
         end
     end
     if details ~= '' then
-        return true, 'Star with Ring',
-            'Startype: ' .. scan.StarType .. ', Sub: ' .. scan.Subclass .. scan.Luminosity .. ', Rings: ' .. details
-    end
-end
-::End::
-
--- NOTE: Need to figure out which of the above or below we like better.
--- Trigger on any ring around an interesting star type
-::Criteria::
-local uninterestingRingedStarTypes = {
-    ['L'] = true,
-    ['T'] = true,
-    ['Y'] = true
-}
-
-if scan.StarType and not uninterestingRingedStarTypes[scan.StarType] and hasRings(scan.Rings) then
-    for ring in ringsOnly(scan.Rings) do
         local starTypeDesc = scan.StarType:gsub('_', ' ') .. ' star'
         if string.startsWith(scan.StarType, 'D') then
             starTypeDesc = 'White Dwarf (' .. scan.StarType .. ') star'
@@ -282,7 +265,9 @@ if scan.StarType and not uninterestingRingedStarTypes[scan.StarType] and hasRing
         elseif scan.StarType == 'X' then
             starTypeDesc = 'Exotic star'
         end
-        return true, 'Ringed ' .. starTypeDesc, ''
+        return true,
+        'Ringed ' .. starTypeDesc,
+        'Startype: ' .. scan.StarType .. ', Sub: ' .. scan.Subclass .. ', Lum: '.. scan.Luminosity .. ', Rings: ' .. details
     end
 end
 ::End::
@@ -602,29 +587,6 @@ if parents and SCANRING == false then
                 end
             end
         end
-    end
-end
-::End::
-
--- Triggers for all kind of Stars with Ring / filters out Belts / shows Star- and Ringdetails 
--- THX to fjk and Eahlstan
--- https://github.com/Xjph/ObservatoryCore/wiki/Lua-Custom-Criteria#startype-values
--- set within NOINTEREST table on top within the globals all types of stars you don't want to be triggered
-::Criteria::
-if scan.StarType and scan.StarType ~= '' and not NOINTERESTSTAR[scan.StarType] and scan.Rings then
-    local DETAILS = ''
-    local LUMI = '-'
-    for ring in rings(scan.Rings) do
-        if (string.find(ring.name, "Ring")) then
-            DETAILS = DETAILS .. ring.ringclass:gsub("%eRingClass_", "") .. ' '
-        end
-    end
-    if DETAILS ~= '' then
-        if scan.Luminosity then
-            LUMI = scan.Luminosity
-        end
-        return true, 'Found a Star of Type ' .. scan.StarType .. ', with Ring', 'Startype: ' ..
-            scan.StarType .. ', Sub: ' .. scan.Subclass .. ', Lum: ' .. LUMI .. ', Rings: ' .. DETAILS
     end
 end
 ::End::
