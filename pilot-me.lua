@@ -226,7 +226,8 @@ if scan.StarSystem and scan.StarSystem ~= SYSTEMNAMESTORE then
 end
 ::End::
 
-::Criteria:: -- Trigger on any metallic ring
+-- Trigger on any metallic ring
+::Criteria::
 for ring in rings(scan.Rings) do
     if ring.ringclass == 'eRingClass_Metalic' then
         return true, 'Metallic Ring', ring.name
@@ -234,7 +235,8 @@ for ring in rings(scan.Rings) do
 end
 ::End::
 
-::Criteria:: -- Trigger on any ring around an interesting star type
+-- Trigger on any ring around an interesting star type
+::Criteria::
 local uninterestingRingedStarTypes = {
     ['L'] = true,
     ['T'] = true,
@@ -260,8 +262,8 @@ end
 ::End::
 
 -- NOTE: Need to figure out which of the above or below we like better.
-
-::Criteria:: -- Trigger on any ring around an interesting star type
+-- Trigger on any ring around an interesting star type
+::Criteria::
 local uninterestingRingedStarTypes = {
     ['L'] = true,
     ['T'] = true,
@@ -285,7 +287,8 @@ if scan.StarType and not uninterestingRingedStarTypes[scan.StarType] and hasRing
 end
 ::End::
 
-::Criteria:: -- Trigger on Hot Jupiter
+-- Trigger on Hot Jupiter
+::Criteria::
 if scan.ParentType == 'Star' then
     if scan.PlanetClass and string.find(string.lower(scan.PlanetClass), 'gas giant') and (scan.OrbitalPeriod <= 864000) then
         return true, 'Hot Jupiter', 'Orbital Period: ' .. math.floor(scan.OrbitalPeriod / 864) / 100 .. ' days'
@@ -293,7 +296,8 @@ if scan.ParentType == 'Star' then
 end
 ::End::
 
-::Criteria:: -- Trigger on high number of biological signals
+-- Trigger on high number of biological signals
+::Criteria::
 if biosignals >= MINBIOLOGICAL then
     return true,
            string.format('%i biological signal%s found', biosignals, biosignals > 1 and 's' or ''),
@@ -301,7 +305,8 @@ if biosignals >= MINBIOLOGICAL then
 end
 ::End::
 
-::Criteria:: -- Trigger on potential galactic record breakers
+-- Trigger on potential galactic record breakers
+::Criteria::
 local recordBook = {
     ["Metal rich body"] = {
         DistanceFromArrivalLS = {0.087741, 7490780},
